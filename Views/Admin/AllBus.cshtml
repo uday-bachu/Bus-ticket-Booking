@@ -1,0 +1,106 @@
+﻿@*@model IEnumerable<Busticket.Models.Bus>
+
+    @{
+        ViewBag.Title = "AllBus";
+        Layout = "~/Views/Shared/AdminView.cshtml";
+    }
+
+    <h2>AllBus</h2>
+
+    <<table class="table">
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.BusNo)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.vendor.name)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.driver)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.seats)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.Origin)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.Destination)
+             </th>
+
+
+             <th></th>
+         </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vendor.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.driver)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.seats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origin)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+
+
+            </tr>
+        }
+
+    </table>*@
+
+
+
+@model IEnumerable<Busticket.Models.Bus>
+
+@{
+    ViewBag.Title = "AllBus";
+    Layout = "~/Views/Shared/AdminView.cshtml";
+}
+
+<h2>All Buses</h2>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Bus Number</th>
+                        <th>Vendor</th>
+                        <th>Driver</th>
+                        <th>Seats</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.BusNo</td>
+                            <td>@item.vendor.name</td>
+                            <td>@item.driver</td>
+                            <td>@item.seats</td>
+                            <td>@item.Origin</td>
+                            <td>@item.Destination</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

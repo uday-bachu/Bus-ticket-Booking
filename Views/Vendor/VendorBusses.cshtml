@@ -1,0 +1,117 @@
+﻿@*@model IEnumerable<Busticket.Models.Bus>
+
+    @{
+        ViewBag.Title = "VendorBusses";
+        Layout = "~/Views/Shared/VendorView.cshtml";
+    }
+
+    <h2>VendorBusses</h2>
+
+    <p>
+        @Html.ActionLink("Create New Bus", "CreateBus")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.vendor.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.driver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDay)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vendor.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.driver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Origin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditBus", new { id=item.BusNo }) |
+                @Html.ActionLink("Details", "BusDetails", new { id=item.BusNo }) |
+                @Html.ActionLink("Delete", "DeleteBus", new { id=item.BusNo })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+
+@model IEnumerable<Busticket.Models.Bus>
+
+@{
+    ViewBag.Title = "VendorBuses";
+    Layout = "~/Views/Shared/VendorView.cshtml";
+}
+
+<h2 class="text-primary">Vendor Buses</h2>
+<div>
+    <a href="@Url.Action("CreateBus")" class="btn btn-primary"><i class="fas fa-edit"></i> Create Bus</a>
+</div>
+
+</br>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Bus No</th>
+                <th>Vendor</th>
+                <th>Driver</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.BusNo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.vendor.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.driver)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Origin)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Destination)</td>
+                    <td>
+                        <a href="@Url.Action("EditBus", new { id = item.BusNo })" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="@Url.Action("BusDetails", new { id = item.BusNo })" class="btn btn-info"><i class="fas fa-info-circle"></i> Details</a>
+                        <a href="@Url.Action("DeleteBus", new { id = item.BusNo })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this bus?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

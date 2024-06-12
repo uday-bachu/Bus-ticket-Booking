@@ -1,0 +1,64 @@
+﻿@*@model Busticket.Models.Admin
+
+    @{
+        ViewBag.Title = "About";
+        Layout = "~/Views/Shared/AdminView.cshtml";
+    }
+
+    <h2>About</h2>
+
+    <div>
+        <h4>Admin</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AdminName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AdminName)
+            </dd>
+
+            <dt>
+                <h3> Admin ID</h3>
+            </dt>
+
+            <dd>
+                <h3>111</h3>
+            </dd>
+
+            <dt>
+                <h3> Role</h3>
+            </dt>
+
+            <dd>
+                <h3>Admin</h3>
+            </dd>
+
+        </dl>
+    </div>*@
+
+@model Busticket.Models.Admin
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/AdminView.cshtml";
+}
+
+<h2>About</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <ul class="list-group">
+        <li class="list-group-item">
+            <strong>Admin Name</strong>: UDAY
+        </li>
+        <li class="list-group-item">
+            <strong>Admin ID</strong>: 111
+        </li>
+        <li class="list-group-item">
+            <strong>Role</strong>: Admin
+        </li>
+    </ul>
+</div>

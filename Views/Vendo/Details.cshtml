@@ -1,0 +1,155 @@
+﻿@model copyproject.Models.Bus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@*
+    <div>
+        <h4>Bus</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.vendor.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.vendor.name)
+            </dd>
+
+            <dt>
+                Empty Seats
+            </dt>
+
+            <dd>
+                @ViewBag.EmptySeats
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.seats)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.seats)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.driver)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.driver)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.driver)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.driver)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BusNo }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+*@
+
+<div>
+
+
+</div>
+
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusNo)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.BusNo)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vendor.name)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.vendor.name)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.seats)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.seats)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Available Seats :
+        </th>
+        <td>
+            @ViewBag.EmptySeats
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.driver)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.driver)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Origin)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Origin)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Destination)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.ArrivalTime)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.DepartureTime)
+        </td>
+    </tr>
+
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BusNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

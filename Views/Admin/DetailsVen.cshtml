@@ -1,0 +1,95 @@
+﻿@*@model Busticket.Models.vendor
+
+    @{
+        ViewBag.Title = "Vendor Details";
+        Layout = "~/Views/Shared/AdminView.cshtml";
+    }
+
+    <h2>Vendor Details</h2>
+
+    <div>
+        <h4>vendor</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.age)
+            </dd>
+
+        </dl>
+    </div>
+
+
+    <p>
+        @Html.ActionLink("List of Busses", "VendorBusses", new { id = Model.id })
+    </p>
+
+    <p>
+        @Html.ActionLink("Edit", "EditVen", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "AdminIndex")
+    </p>*@
+
+
+
+
+@model Busticket.Models.Vendor
+
+@{
+    ViewBag.Title = "Vendor Details";
+    Layout = "~/Views/Shared/AdminView.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Vendor Details</h2>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.name)</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Mail)</dd>
+
+                <dt class="col-sm-3">Phone Number</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNo)</dd>
+
+                <dt class="col-sm-3">Age</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.age)</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 text-center">
+    @Html.ActionLink("List of Busses", "VendorBusses", new { id = Model.id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Edit", "EditVen", new { id = Model.id }, new { @class = "btn btn-info" })
+    @Html.ActionLink("Back to List", "AdminIndex", null, new { @class = "btn btn-secondary" })
+</div>

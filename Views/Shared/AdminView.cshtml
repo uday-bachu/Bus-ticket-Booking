@@ -1,0 +1,463 @@
+﻿@*
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Admin Home</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS for additional styling -->
+        <style>
+            body {
+                background-color: #f4f4f4;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .navbar-brand, .nav-link {
+                font-weight: bold;
+            }
+
+            .footer {
+                background-color: #fff;
+                border-top: 1px solid #eaeaea;
+            }
+
+                .footer a {
+                    color: #007bff;
+                    text-decoration: none;
+                }
+
+                    .footer a:hover {
+                        text-decoration: underline;
+                    }
+        </style>
+    </head>
+    <body onload="disableBackButton()">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-primary" href="#">Admin Panel</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("AdminIndex", "Admin")">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("About", "Admin")">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("AllBus", "Admin")">Buses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="logout();">Log-Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container mt-4">
+            @RenderBody()
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-4">
+            <div class="container text-center py-3">
+                <a href="@Url.Action("Policies", "Home")">Company Policy</a> |
+                <a href="@Url.Action("Terms", "Home")">Terms and Conditions</a> |
+                <a href="@Url.Action("AdminIndex", "Admin")">Company Values</a>
+            </div>
+        </footer>
+
+        <!-- Bootstrap and jQuery Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Custom Script -->
+        <script type="text/javascript">
+            // Function to disable back button navigation
+            function disableBackButton() {
+                window.history.forward();
+            }
+            // Ensure back button is disabled on page load
+            window.onload = disableBackButton;
+            window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
+            window.onunload = function () { void (0) }
+
+            // Function to perform logout action
+            function logout() {
+                // Perform logout logic here
+                sessionStorage.clear();
+                // Disable back button navigation
+                disableBackButton();
+                // Redirect to the logout page
+                window.location.href = '@Url.Action("Index", "Home")'; // Redirect to HomeController's Index action
+            }
+        </script>
+    </body>
+    </html>
+
+
+
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Admin Home</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS for additional styling -->
+        <style>
+            body {
+                background-color: #f4f4f4;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .navbar {
+                background-color: #d4edda; /* Light green background */
+                border-bottom: 3px solid #c3e6cb; /* Slightly darker green border for depth */
+            }
+
+            .navbar-brand, .nav-link {
+                font-weight: bold;
+            }
+
+            .footer {
+                background-color: #fff;
+                border-top: 1px solid #eaeaea;
+            }
+
+                .footer a {
+                    color: #007bff;
+                    text-decoration: none;
+                }
+
+                    .footer a:hover {
+                        text-decoration: underline;
+                    }
+            /* Pop-up effect for main content */
+            .main-content {
+                transition: transform 0.3s ease-in-out;
+            }
+
+                .main-content.active {
+                    transform: scale(1.03); /* Slightly scale up */
+                    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Add shadow for pop effect */
+                }
+        </style>
+    </head>
+    <body onload="disableBackButton()">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand text-primary" href="#">Admin Panel</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("AdminIndex", "Admin")">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("About", "Admin")">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("AllBus", "Admin")">Buses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="logout();">Log-Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container mt-4 main-content">
+            @RenderBody()
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-4">
+            <div class="container text-center py-3">
+                <a href="@Url.Action("Policies", "Home")">Company Policy</a> |
+                <a href="@Url.Action("Terms", "Home")">Terms and Conditions</a> |
+                <a href="@Url.Action("AdminIndex", "Admin")">Company Values</a>
+            </div>
+        </footer>
+
+        <!-- Bootstrap and jQuery Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Custom Script -->
+        <script type="text/javascript">
+        // Function to disable back button navigation
+        function disableBackButton() {
+            window.history.forward();
+        }
+        // Ensure back button is disabled on page load
+        window.onload = disableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
+        window.onunload = function () { void (0) }
+
+        // Function to perform logout action
+        function logout() {
+            // Perform logout logic here
+            sessionStorage.clear();
+            // Disable back button navigation
+            disableBackButton();
+            // Redirect to the logout page
+            window.location.href = '@Url.Action("Index", "Home")'; // Redirect to HomeController's Index action
+        }
+        </script>
+    </body>
+    </html>
+
+*@
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Home</title>-->
+<!-- Bootstrap CSS -->
+<!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+<!-- Custom CSS for additional styling -->
+<!--<style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #f8d7da; /* Light red background */
+            border-bottom: 3px solid #dc3545; /* Slightly darker red border for depth */
+        }
+
+        .navbar-brand, .nav-link {
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #fff;
+            border-top: 1px solid #eaeaea;
+        }
+
+            .footer a {
+                color: #dc3545; /* Light red text color */
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Pop-up effect for main content */
+        .main-content {
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .main-content.active {
+                transform: scale(1.03); /* Slightly scale up */
+                box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Add shadow for pop effect */
+            }
+    </style>
+</head>
+<body onload="disableBackButton()">-->
+<!-- Navigation Bar -->
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand text-danger" href="#">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("AdminIndex", "Admin")">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About", "Admin")">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("AllBus", "Admin")">Buses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="logout();">Log-Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>-->
+<!-- Main Content -->
+<!--<div class="container mt-4 main-content">
+  
+</div>-->
+<!-- Footer -->
+<!--<footer class="footer mt-4">
+    <div class="container text-center py-3">
+        <a href="@Url.Action("Policies", "Home")">Company Policy</a> |
+        <a href="@Url.Action("Terms", "Home")">Terms and Conditions</a> |
+        <a href="@Url.Action("AdminIndex", "Admin")">Company Values</a>
+    </div>
+</footer>-->
+<!-- Bootstrap and jQuery Scripts -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<!-- Custom Script -->
+<!--<script type="text/javascript">
+    // Function to disable back button navigation
+    function disableBackButton() {
+        window.history.forward();
+    }
+    // Ensure back button is disabled on page load
+    window.onload = disableBackButton;
+    window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
+    window.onunload = function () { void (0) }
+
+    // Function to perform logout action
+    function logout() {
+        // Perform logout logic here
+        sessionStorage.clear();
+        // Disable back button navigation
+        disableBackButton();
+        // Redirect to the logout page
+        window.location.href = '@Url.Action("Index", "Home")'; // Redirect to HomeController's Index action
+    }
+    </script>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for additional styling -->
+    <style>
+        body {
+            background-color: #f8d7da; /* Light red background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #dc3545; /* Dark red navbar background */
+            border-bottom: 3px solid #d73b3e; /* Slightly darker red border for depth */
+        }
+
+        .navbar-brand, .nav-link {
+            font-weight: bold;
+            color: #fff; /* White text color for navbar */
+        }
+
+        .footer {
+            background-color: #fff;
+            border-top: 1px solid #eaeaea;
+        }
+
+            .footer a {
+                color: #dc3545; /* Light red text color */
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Pop-up effect for main content */
+        .main-content {
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .main-content.active {
+                transform: scale(1.03); /* Slightly scale up */
+                box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Add shadow for pop effect */
+            }
+    </style>
+</head>
+<body onload="disableBackButton()">
+    @RenderSection("Scripts", required: false)
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Admin Panel</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("AdminIndex", "Admin")">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("About", "Admin")">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("AllBus", "Admin")">Buses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logout();">Log-Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4 main-content">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-4">
+        <div class="container text-center py-3">
+            <a href="@Url.Action("Policies", "Home")">Company Policy</a> |
+            <a href="@Url.Action("Terms", "Home")">Terms and Conditions</a> |
+            <a href="@Url.Action("AdminIndex", "Admin")">Company Values</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Custom Script -->
+    <script type="text/javascript">
+    // Function to disable back button navigation
+    function disableBackButton() {
+        window.history.forward();
+    }
+    // Ensure back button is disabled on page load
+    window.onload = disableBackButton;
+    window.onpageshow = function (evt) { if (evt.persisted) disableBackButton() }
+    window.onunload = function () { void (0) }
+
+    // Function to perform logout action
+    function logout() {
+        // Perform logout logic here
+        sessionStorage.clear();
+        // Disable back button navigation
+        //disableBackButton();
+        // Redirect to the logout page
+        window.location.href = '@Url.Action("Index", "Home")'; // Redirect to HomeController's Index action
+        }
+
+    </script>
+</body>
+</html>

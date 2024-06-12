@@ -1,0 +1,89 @@
+﻿@*
+@model Busticket.Models.vendor
+
+@{
+    ViewBag.Title = "VendorIndex";
+    Layout = "~/Views/Shared/VendorView.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Welcome, Vendor!</h1>
+        <p class="lead text-center">Manage your business efficiently with Black Bus.</p>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Manage Buses</h5>
+                    <p class="card-text text-center">Add, edit, or delete buses in your fleet.</p>
+                    <div class="text-center">
+                        @Html.ActionLink("Manage Buses", "Allbuses", null, new { @class = "btn btn-light" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-secondary">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Passengers</h5>
+                    <p class="card-text text-center">View and manage passenger bookings.</p>
+                    <div class="text-center">
+                        @Html.ActionLink("Manage Passengers", "AllPassengers", null, new { @class = "btn btn-light" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            @Html.ActionLink("Edit Vendor Details", "EditVen", new { id = Model.id }, new { @class = "btn btn-success" })
+        </div>
+    </div>
+</div>
+
+
+
+    *@
+    @model Busticket.Models.Vendor
+
+    @{
+        ViewBag.Title = "VendorIndex";
+        Layout = "~/Views/Shared/VendorView.cshtml";
+    }
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Welcome, Vendor!</h1>
+            <p class="lead text-center">Manage your business efficiently with Black Bus.</p>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <h2 class="text-center">Passengers</h2>
+                    <p class="text-center">View and manage passenger bookings.</p>
+                    <div class="text-center">
+                        @Html.ActionLink("View Passengers", "AllPassengers", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <h2 class="text-center">Manage Buses</h2>
+                    <p class="text-center">Add, edit, or delete buses in your fleet.</p>
+                    <div class="text-center">
+                        @Html.ActionLink("View Buses", "VendorBusses", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                @Html.ActionLink("Edit My Details", "EditVen", new { id = Model.id }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>

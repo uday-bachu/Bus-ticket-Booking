@@ -1,0 +1,95 @@
+﻿@*@model IEnumerable<Busticket.Models.Seat>
+
+    @{
+        ViewBag.Title = "Select Seat";
+        Layout = "~/Views/Shared/PassengerView.cshtml";
+    }
+
+    <h2>Select Seat</h2>
+
+    @using (Html.BeginForm("SelectSeat", "Passenger", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.Label("Select a Seat:")
+            <select class="form-control" name="seatId">
+                <option value="">-- Select Seat --</option>
+                @foreach (var seat in Model)
+                {
+                    <option value="@seat.SeatId">@seat.SeatName</option>
+                }
+            </select>
+            <div class="form-group">
+                <label for="paymentStatus">Payment Status:</label>
+                <div>
+                    <input type="checkbox" name="paymentStatus" value="Paid" id="paymentStatus">
+                    <label for="paymentStatus">Paid</label>
+                </div>
+                <p id="paymentWarning" style="color: red; display: none;">Payment status must not be empty.</p>
+            </div>
+
+            <script>
+                // Check before form submission if the payment status is indicated
+                document.querySelector('form').addEventListener('submit', function (e) {
+                    var isPaid = document.getElementById('paymentStatus').checked;
+
+                    if (!isPaid) {
+                        e.preventDefault(); // Stop form submission
+                        document.getElementById('paymentWarning').style.display = 'block';
+                    }
+                });
+            </script>
+
+
+
+        </div>
+        <input type="hidden" name="passengerId" value="@ViewBag.PassengerId">
+        <input type="hidden" name="busNo" value="@ViewBag.BusNo">
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }*@
+
+
+@model List<Busticket.Models.Seat>
+
+@{
+    ViewBag.Title = "Select Seat";
+    Layout = "~/Views/Shared/PassengerView.cshtml";
+}
+
+<h2>Select Seat</h2>
+
+
+
+@using (Html.BeginForm("SelectSeat", "Passenger", new { passengerId = ViewBag.PassengerId, busNo = ViewBag.BusNo, selectedDate = ViewBag.SelectedDate }, FormMethod.Post))
+{
+
+    <table class="table">
+        <tr>
+            <th>Seat Number</th>
+            <!-- Add other relevant columns if needed -->
+            <th>Select</th>
+        </tr>
+        @foreach (var seat in Model)
+        {
+            <tr>
+                <td>@seat.SeatName</td>
+                <!-- Add other relevant columns if needed -->
+                <td>
+                    @Html.RadioButton("seatId", seat.SeatId)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        <p>Select payment status:</p>
+        @Html.RadioButton("paymentStatus", "Paid") Paid
+        @Html.RadioButton("paymentStatus", "Not Paid") Not Paid
+    </div>
+
+    <!-- Hidden fields for passing parameters -->
+   
+
+    <input type="submit" value="Book Seat" class="btn btn-primary" />
+}
+

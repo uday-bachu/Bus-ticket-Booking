@@ -1,0 +1,146 @@
+﻿@*
+    @model List<(Busticket.Models.Booking booking, int SeatName)>
+
+
+    @{
+        ViewBag.Title = "passengerBooking";
+        Layout = "~/Views/Shared/PassengerView.cshtml";
+
+    }
+
+    <h2>passenger Booking</h2>
+
+
+    <table>
+        <tr>
+            <th>Passenger Booking Id</th>
+
+            <th>Booking Date</th>
+
+            <th>Seat Number</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.booking.BookingId </th>
+
+                <th>@item.booking.BookingDate</th>
+
+                <th>@item.SeatName</th>
+
+            </tr>
+        }
+    </table>
+*@
+
+
+@*
+    <!--@model List<Busticket.Models.Booking>
+
+
+
+    @{
+        ViewBag.Title = "Bus Passengers";
+
+        Layout = "~/Views/Shared/PassengerView.cshtml";
+    }
+
+    <h2>Bus Passengers</h2>
+
+
+    <table>
+        <tr>
+            <th>Booking Id</th>
+
+            <th>Passenger Name</th>
+
+            <th>Seat Number</th>
+
+            <th>Booking Date</th>
+
+            <th>Payment Status</th>
+
+            <th>Bus Number</th>
+
+            <th>Driver Name</th>
+
+            <th>Bus Origin</th>
+
+            <th>Bus Destination</th>
+
+            <th>Departure</th>
+
+            <th>Arraival</th>
+
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.BookingId</th>
+
+                <th>@item.Passenger.Name </th>
+
+                <th>@item.Seat.SeatName</th>
+
+                <th>@item.BookingDate</th>
+
+                <th>@item.IsPaid</th>
+
+                <th>@item.BusNo</th>
+
+                <th>@item.Bus.driver</th>
+
+                <th>@item.Bus.Origin</th>
+
+                <th>@item.Bus.Destination</th>
+
+                <th>@item.Bus.StartDay</th>
+
+                <th>@item.Bus.EndDay</th>
+
+                <th>
+                    <a href="@Url.Action("DelBooking", new { bookingId = item.BookingId })" class="btn btn-primary btn-lg btn-block">Delete</a>
+                </th>
+
+
+            </tr>
+        }
+    </table>-->
+
+*@
+
+
+
+@model List<Busticket.Models.Booking>
+
+@{
+    ViewBag.Title = "Passenger Bookings";
+    Layout = "~/Views/Shared/PassengerView.cshtml";
+}
+
+<h2>Your Bookings</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Booking ID: @item.BookingId</h5>
+                    <p class="card-text">Seat Number: @item.Seat.SeatName</p>
+                    <p class="card-text">Booking Date: @item.BookingDate</p>
+                    <p class="card-text">Payment Status: @item.IsPaid</p>
+                    <p class="card-text">Bus Number: @item.BusLog.BusNo</p>
+                    
+                    <p class="card-text">Origin: @item.BusLog.Bus.Origin</p>
+                    <p class="card-text">Destination: @item.BusLog.Bus.Destination</p>
+                    <p class="card-text">Departure Time: @item.BusLog.DepartureTime</p>
+                    <p class="card-text">Arrival Time: @item.BusLog.ArrivalTime</p>
+                    <a href="@Url.Action("DelBooking", "Passenger", new { bookingId = item.BookingId })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this booking?')">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

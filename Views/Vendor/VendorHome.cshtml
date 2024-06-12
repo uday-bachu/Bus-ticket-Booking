@@ -1,0 +1,95 @@
+﻿@*@{
+        ViewBag.Title = "VendorHome";
+        Layout = "~/Views/Shared/VendorView.cshtml";
+    }
+
+    @model Busticket.Models.vendor
+
+
+    <h2>Vendor Index</h2>
+
+    <div>
+        <h4>vendor</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.age)
+            </dd>
+
+        </dl>
+    </div>
+
+
+    <p>
+        @Html.ActionLink("List of Buses", "VendorBusses")
+
+    </p>
+    <p>
+        @Html.ActionLink("Edit", "EditVen", new { id = Model.id }) |
+
+    </p>*@
+
+@model Busticket.Models.Vendor
+
+
+@{
+    ViewBag.Title = "VendorHome";
+    Layout = "~/Views/Shared/VendorView.cshtml";
+}
+
+
+<h2 class="text-primary">Vendor Index</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Vendor Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Name:</dt>
+            <dd>@Html.DisplayFor(model => model.name)</dd>
+
+            <dt>Email:</dt>
+            <dd>@Html.DisplayFor(model => model.Mail)</dd>
+
+            <dt>Phone Number:</dt>
+            <dd>@Html.DisplayFor(model => model.PhoneNo)</dd>
+
+            <dt>Age:</dt>
+            <dd>@Html.DisplayFor(model => model.age)</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a href="@Url.Action("VendorBusses")" class="btn btn-primary"><i class="fas fa-bus"></i> List of Buses</a>
+    <a href="@Url.Action("EditVen", new { id = Model.id })" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+</div>
+

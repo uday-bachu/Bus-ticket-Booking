@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Busticket.Models.BusLog>
+
+@{
+    ViewBag.Title = "BusLogs";
+    Layout = "~/Views/Shared/VendorView.cshtml";
+}
+
+<h2>Bus Logs</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Journey Day</th>
+            <th>Journey Date</th>
+            <th>Available Seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var busLog in Model)
+        {
+            <tr>
+                <td>@busLog.JourneyDay</td>
+                <td>@busLog.ArrivalTime.ToShortDateString()</td> <!-- Display only the date -->
+                <td>@ViewBag.seats[busLog.JourneyDay - 1]</td> <!-- Assuming busLog.Id is 1-based -->
+                @*<td>@Html.ActionLink("Delete", "DeleteBusLog", new { id = busLog.Id }, new { @class = "btn btn-primary btn-sm mr-2" })</td>*@
+                <td>@Html.ActionLink("List of Passengers", "BusPassengers", new { id = busLog.Id }, new { @class = "btn btn-primary btn-sm mr-2" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

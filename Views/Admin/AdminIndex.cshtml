@@ -1,0 +1,113 @@
+﻿@*@model IEnumerable<Busticket.Models.vendor>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/AdminView.cshtml";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New Vendor", "CreateVendor")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNo)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "EditVen", new { id = item.id }) |
+                    @Html.ActionLink("Details", "DetailsVen", new { id = item.id }, null) |
+                    @Html.ActionLink("Delete", "DeleteVen", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+
+
+
+
+@model IEnumerable<Busticket.Models.Vendor>
+
+@{
+    ViewBag.Title = "Vendor List";
+    Layout = "~/Views/Shared/AdminView.cshtml";
+}
+
+<h2>Vendor List</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">All Vendors</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Age</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var vendor in Model)
+                            {
+                                <tr>
+                                    <td>@vendor.name</td>
+                                    <td>@vendor.Mail</td>
+                                    <td>@vendor.PhoneNo</td>
+                                    <td>@vendor.age</td>
+                                    <td>
+                                        <a href="@Url.Action("VendorBusses", "Admin", new { id = vendor.id })" class="btn btn-info">Buses</a>
+                                        <a href="@Url.Action("EditVen", "Admin", new { id = vendor.id })" class="btn btn-primary">Edit</a>
+                                        <a href="@Url.Action("DeleteVen", "Admin", new { id = vendor.id })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this vendor?')">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="@Url.Action("CreateVendor", "Admin")" class="btn btn-success">Create New Vendor</a>
+</div>

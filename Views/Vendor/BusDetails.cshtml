@@ -1,0 +1,53 @@
+﻿@model Busticket.Models.Bus
+
+@{
+    ViewBag.Title = "Bus Details";
+    Layout = "~/Views/Shared/VendorView.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Bus Details</h2>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">Vendor</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.vendor.name)</dd>
+
+                <dt class="col-sm-3">Seats</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.seats)</dd>
+
+
+
+
+
+
+
+                <dt class="col-sm-3">Driver</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.driver)</dd>
+
+                <dt class="col-sm-3">Origin</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Origin)</dd>
+
+                <dt class="col-sm-3">Destination</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Destination)</dd>
+
+                <dt class="col-sm-3">Journay Days</dt>
+                <dd class="col-sm-9">@ViewBag.JourneyDays </dd>
+
+                <dt class="col-sm-3">Starting Day</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.StartDay)</dd>
+
+                <dt class="col-sm-3">Ending Day</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EndDay)</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 text-center">
+    @Html.ActionLink("Edit", "EditBus", new { id = Model.BusNo }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "VendorBusses", null, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Bus logs", "BusLogs", new { busNo = Model.BusNo }, new { @class = "btn btn-secondary" })
+
+</div>

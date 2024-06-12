@@ -1,0 +1,287 @@
+﻿@*
+
+            @{
+                ViewBag.Title = "Home Page";
+            }
+
+            <main>
+                <section class="row" aria-labelledby="aspnetTitle">
+                    <h1 id="title">ASP.NET</h1>
+                    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+                    <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+                </section>
+
+                <div class="row">
+                    <section class="col-md-4" aria-labelledby="gettingStartedTitle">
+                        <h2 id="gettingStartedTitle">Getting started</h2>
+                        <p>
+                            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                            enables a clean separation of concerns and gives you full control over markup
+                            for enjoyable, agile development.
+                        </p>
+                        <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                    </section>
+                    <section class="col-md-4" aria-labelledby="librariesTitle">
+                        <h2 id="librariesTitle">Get more libraries</h2>
+                        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                        <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+                    </section>
+                    <section class="col-md-4" aria-labelledby="hostingTitle">
+                        <h2 id="hostingTitle">Web Hosting</h2>
+                        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                        <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                    </section>
+                </div>
+            </main>
+
+
+
+
+
+        @{
+            ViewBag.Title = "Login";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        <h2>Login</h2>
+
+
+        <aside style="float:right;width:40%;padding:10px;margin:10px;border:2px solid red;">
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+                <table style="width:100%;" border="1">
+                    <tr>
+                        <th>Login Id</th>
+                        <td>@Html.TextBox("LoginId", null, new { @class = "login-input" })</td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td>@Html.Password("Password", null, new { @class = "login-input" })</td>
+                    </tr>
+                    <tr>
+                        <th>Role</th>
+                        <td>
+                            @Html.DropDownList("Role",
+                                   new List<SelectListItem>() {
+                                        new SelectListItem(){Text="admin", Value="admin"},
+                                        new SelectListItem(){Text="Vendor", Value="Vendor"},
+                                        new SelectListItem(){Text="Passenger", Value="Passenger"}
+                                   }, "Select..", new { @class = "login-select" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>New User? @Html.ActionLink("Sign-Up", "Create", "Passenger", null, new { @class = "login-link" })</th>
+                        <td><button type="submit">Sign In</button></td>
+                    </tr>
+                </table>
+            }
+        </aside>
+        <section>
+        </section>
+
+          @*
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="..." alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="..." alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="..." alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+    @{
+        ViewBag.Title = "Login";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2 class="text-center">Login</h2>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <article class="card-body">
+                        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-login" }))
+                        {
+                            <div class="form-group">
+                                @Html.TextBox("LoginId", null, new { @class = "form-control", placeholder = "Login ID" })
+                            </div>
+                            <div class="form-group">
+                                @Html.Password("Password", null, new { @class = "form-control", placeholder = "Password" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownList("Role",
+                                    new List<SelectListItem>() {
+                                        new SelectListItem(){Text="Admin", Value="admin"},
+                                        new SelectListItem(){Text="Vendor", Value="Vendor"},
+                                        new SelectListItem(){Text="Passenger", Value="Passenger"}
+                                    }, "Select Role...", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            </div>
+                            <p class="text-center">
+                                New User? @Html.ActionLink("Sign-Up", "Create", "Passenger", null, new { @class = "link-signup" })
+                            </p>
+                        }
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section styles {
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            .form-login {
+                margin-top: 20px;
+            }
+
+            .link-signup {
+                color: #007bff;
+            }
+        </style>
+    }
+
+    @section scripts {
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    }
+
+*@
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center mt-5">Login</h2>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-light shadow-sm">
+                <article class="card-body">
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-login" }))
+                    {
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                @Html.TextBox("LoginId", null, new { @class = "form-control", placeholder = "Enter your Login ID" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                @Html.Password("Password", null, new { @class = "form-control", placeholder = "Enter your Password" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                </div>
+                                @Html.DropDownList("Role",
+                                    new List<SelectListItem>() {
+                                        new SelectListItem(){Text="Admin", Value="admin"},
+                                        new SelectListItem(){Text="Vendor", Value="Vendor"},
+                                        new SelectListItem(){Text="Passenger", Value="Passenger"}
+                                    }, "Select Role...", new { @class = "form-control custom-select" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <p class="text-center">
+                            New User? @Html.ActionLink("Sign-Up", "Create", "Passenger", null, new { @class = "link-signup" })
+                        </p>
+                    }
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section styles {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <style>
+        .form-login {
+            margin-top: 20px;
+        }
+
+        .link-signup {
+            color: #007bff;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .input-group-prepend .input-group-text {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
+        /* Custom styling for select dropdown */
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3e%3cpath d='M7 10l5 5 5-5H7z' fill='%23000'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: center;
+            padding-right: 2.5rem;
+        }
+    </style>
+}
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+}

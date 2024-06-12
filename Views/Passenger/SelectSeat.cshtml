@@ -1,0 +1,43 @@
+﻿
+@model List<Busticket.Models.Seat>
+
+@{
+    ViewBag.Title = "Select Seat";
+    Layout = "~/Views/Shared/PassengerView.cshtml";
+}
+
+<h2>Select Seat</h2>
+
+
+
+@using (Html.BeginForm("SelectSeat", "Passenger", new { passengerId = ViewBag.PassengerId, seatLogId = ViewBag.SeatLogId }, FormMethod.Post))
+{
+
+    <table class="table">
+        <tr>
+            <th>Seat Number</th>
+            <th>Select</th>
+        </tr>
+        @foreach (var seat in Model)
+        {
+            <tr>
+                <td>@seat.SeatName</td>
+                <td>
+                    @Html.RadioButton("seatId", seat.SeatId)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        <p>Select payment status:</p>
+        @Html.RadioButton("paymentStatus", "Paid") Paid
+        @Html.RadioButton("paymentStatus", "Not Paid") Not Paid
+    </div>
+
+    <!-- Hidden fields for passing parameters -->
+
+
+    <input type="submit" value="Book Seat" class="btn btn-primary" />
+}
+

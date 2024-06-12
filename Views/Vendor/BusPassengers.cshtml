@@ -1,0 +1,251 @@
+﻿@*@model List<Busticket.Models.Booking>
+
+
+
+        @{
+            ViewBag.Title = "Bus Passengers";
+            Layout = "~/Views/Shared/VendorView.cshtml";
+        }
+
+        <h2>Bus Passengers</h2>
+
+
+        <table>
+            <tr>
+                <th>Booking Id</th>
+
+                <th>Passenger Name</th>
+
+                <th>Seat Number</th>
+
+                <th>Booking Date</th>
+
+                <th>Payment Status</th>
+
+                <th>Bus Number</th>
+
+                <th>Driver Name</th>
+
+                <th>Bus Origin</th>
+
+                <th>Bus Destination</th>
+
+                <th>Departure</th>
+
+                <th>Arraival</th>
+
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.BookingId</th>
+
+                    <th>@item.Passenger.Name </th>
+
+                    <th>@item.Seat.SeatName</th>
+
+                    <th>@item.BookingDate</th>
+
+                    <th>@item.IsPaid</th>
+
+                    <th>@item.BusNo</th>
+
+                    <th>@item.Bus.driver</th>
+
+                    <th>@item.Bus.Origin</th>
+
+                    <th>@item.Bus.Destination</th>
+
+                    <th>@item.Bus.StartDay</th>
+
+                    <th>@item.Bus.EndDay</th>
+
+                </tr>
+            }
+        </table>
+
+
+
+
+        @model List<Busticket.Models.Booking>
+
+        @{
+            ViewBag.Title = "Bus Passengers";
+            Layout = "~/Views/Shared/VendorView.cshtml";
+        }
+
+        <div class="container">
+            <div class="jumbotron">
+                <h2 class="display-4 text-center">Bus Passengers</h2>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Passenger Name</th>
+                        <th>Seat Number</th>
+                        <th>Booking Date</th>
+                        <th>Payment Status</th>
+                        <th>Bus Number</th>
+                        <th>Driver Name</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.BookingId</td>
+                            <td>@item.Passenger.Name</td>
+                            <td>@item.Seat.SeatName</td>
+                            <td>@item.BookingDate.ToShortDateString()</td>
+                            <td>@(item.IsPaid ? "Paid" : "Unpaid")</td>
+                            <td>@item.BusNo</td>
+                            <td>@item.Bus.driver</td>
+                            <td>@item.Bus.Origin</td>
+                            <td>@item.Bus.Destination</td>
+                            <td>@item.Bus.StartDay.ToShortTimeString()</td>
+                            <td>@item.Bus.EndDay.ToShortTimeString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    @model List<Busticket.Models.Booking>
+
+    @{
+        ViewBag.Title = "Bus Passengers";
+        Layout = "~/Views/Shared/VendorView.cshtml";
+    }
+
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="display-4 text-center">Bus Passengers</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Booking ID: @item.BookingId</h5>
+                            <p class="card-text">Passenger Name: @item.Passenger.Name</p>
+                            <p class="card-text">Seat Number: @item.Seat.SeatName</p>
+                            <p class="card-text">Booking Date: @item.BookingDate.ToShortDateString()</p>
+                            <p class="card-text">Payment Status: @(item.IsPaid ? "Paid" : "Unpaid")</p>
+                            <p class="card-text">Bus Number: @item.BusNo</p>
+                            <p class="card-text">Driver Name: @item.Bus.driver</p>
+                            <p class="card-text">Origin: @item.Bus.Origin</p>
+                            <p class="card-text">Destination: @item.Bus.Destination</p>
+                            <p class="card-text">Departure Time: @item.Bus.StartDay.ToShortTimeString()</p>
+                            <p class="card-text">Arrival Time: @item.Bus.EndDay.ToShortTimeString()</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+*@
+
+
+@*Each Box Each color *@
+
+
+@*@model List<Busticket.Models.Booking>
+
+    @{
+        ViewBag.Title = "Bus Passengers";
+        Layout = "~/Views/Shared/VendorView.cshtml";
+    }
+
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="display-4 text-center">Bus Passengers</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                var bgColor = GetRandomColor(); // Function to get a random background color
+                <div class="col-lg-6 mb-4">
+                    <div class="card" style="background-color: @bgColor;">
+                        <div class="card-body">
+                            <h5 class="card-title">Booking ID: @item.BookingId</h5>
+                            <p class="card-text">Passenger Name: @item.Passenger.Name</p>
+                            <p class="card-text">Seat Number: @item.Seat.SeatName</p>
+                            <p class="card-text">Booking Date: @item.BookingDate.ToShortDateString()</p>
+                            <p class="card-text">Payment Status: @(item.IsPaid ? "Paid" : "Unpaid")</p>
+                            <p class="card-text">Bus Number: @item.BusNo</p>
+                            <p class="card-text">Driver Name: @item.Bus.driver</p>
+                            <p class="card-text">Origin: @item.Bus.Origin</p>
+                            <p class="card-text">Destination: @item.Bus.Destination</p>
+                            <p class="card-text">Departure Time: @item.Bus.StartDay.ToShortTimeString()</p>
+                            <p class="card-text">Arrival Time: @item.Bus.EndDay.ToShortTimeString()</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @functions {
+        // Function to generate random hex color
+        public static string GetRandomColor()
+        {
+            Random random = new Random();
+            return String.Format("#{0:X6}", random.Next(0x1000000));
+        }
+    }*@
+
+
+
+
+@model List<Busticket.Models.Booking>
+
+@{
+    ViewBag.Title = "Bus Passengers";
+    Layout = "~/Views/Shared/VendorView.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="display-4 text-center">Bus Passengers</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Booking ID: <span class="text-primary">@item.BookingId</span></h5>
+                        <p class="card-text"><strong>Passenger Name:</strong> <span class="text-info">@item.Passenger.Name</span></p>
+                        <p class="card-text"><strong>Seat Number:</strong> <span class="text-success">@item.Seat.SeatName</span></p>
+                        <p class="card-text"><strong>Booking Date:</strong> <span class="text-danger">@item.BookingDate.ToShortDateString()</span></p>
+                        <p class="card-text"><strong>Payment Status:</strong> <span class="text-warning">@{if (item.IsPaid)
+                            { <text>Paid</text>;
+                        }
+                        else
+                        { <text>Unpaid</text>;
+                    }}</span></p>
+                        <p class="card-text"><strong>Bus Number:</strong> <span class="text-primary">@item.BusLog.BusNo</span></p>
+                        <p class="card-text"><strong>Origin:</strong> <span class="text-success">@item.BusLog.Bus.Origin</span></p>
+                        <p class="card-text"><strong>Destination:</strong> <span class="text-danger">@item.BusLog.Bus.Destination</span></p>
+
+                        <p class="card-text"><strong>journey Date:</strong> <span class="text-warning">@item.BusLog.ArrivalTime.ToShortTimeString()</span></p>
+                        <p class="card-text"><strong>journey Day:</strong> <span class="text-primary">@item.BusLog.JourneyDay</span></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

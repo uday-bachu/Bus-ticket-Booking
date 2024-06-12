@@ -1,0 +1,44 @@
+﻿
+@model Busticket.Models.Passenger
+
+@{
+
+    Layout = "~/Views/Shared/PassengerView.cshtml";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Book a Ticket</h5>
+                    <p class="card-text">Ready to book your next trip?</p>
+                    <a href="@Url.Action("SelectBus", new { passengerId = Model.PassengerId })" class="btn btn-primary btn-lg btn-block">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Profile</h5>
+                    <p class="card-text">Update your personal information.</p>
+                    <a href="@Url.Action("Edit")" class="btn btn-info btn-lg btn-block">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">My Bookings</h5>
+                    <p class="card-text">View your past and upcoming bookings.</p>
+                    <a href="@Url.Action("PassengerBooking")" class="btn btn-success btn-lg btn-block">View Bookings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
